@@ -1,0 +1,25 @@
+﻿<Window x:Class="AiriAssistant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Airi Assistant"
+        Height="260"
+        Width="420"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#15151f">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Airi Assistant"
+                       Foreground="White"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,20"/>
+
+            <Button Content="Shutdown"
+                    Width="180"
+                    Height="45"
+                    FontSize="18"
+                    Click="ShutdownButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

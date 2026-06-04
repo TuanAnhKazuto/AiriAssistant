@@ -1,0 +1,41 @@
+﻿<Window x:Class="AiriAssistant.ShutdownConfirmWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="警告"
+        Width="420"
+        Height="230"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#15151f">
+
+    <Grid Margin="24">
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="警告"
+                       Foreground="White"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,18"/>
+
+            <TextBlock Text="シャットダウンを実行しますか？"
+                       Foreground="White"
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,28"/>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button Content="はい"
+                        Width="110"
+                        Height="38"
+                        Margin="0,0,16,0"
+                        Click="YesButton_Click"/>
+
+                <Button Content="いいえ"
+                        Width="110"
+                        Height="38"
+                        Click="NoButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
