@@ -7,7 +7,14 @@ namespace AiriAssistant.Services
     {
         public void Shutdown()
         {
-            Process.Start("shutdown", "/s /t 0");
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "shutdown.exe",
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            Process.Start(psi);
         }
 
         public void Restart()
