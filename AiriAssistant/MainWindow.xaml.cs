@@ -26,7 +26,7 @@ namespace AiriAssistant
         {
             InitializeComponent();
 
-            _soundService = new SoundService();
+            _powerService = new PowerService();
             _shutdownService = new ShutdownService(_soundService, _powerService);
 
             Loaded += MainWindow_Loaded;
