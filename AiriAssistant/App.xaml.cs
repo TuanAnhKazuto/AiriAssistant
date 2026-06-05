@@ -9,9 +9,7 @@ namespace AiriAssistant
     {
         private readonly SoundService _soundService = new();
 
-        private static Mutex _mutex;
-
-        public bool IsRunning { get; private set; }
+        private static Mutex? _mutex;
 
         protected override async void OnStartup(StartupEventArgs e)
         {
@@ -21,7 +19,6 @@ namespace AiriAssistant
 
             if (!isNewInstance)
             {
-                IsRunning = true;
                 _soundService.Play("Asset\\Sounds\\Airi_Infor\\airi_is_here.wav");
 
                 System.Windows.MessageBox.Show(
@@ -31,10 +28,6 @@ namespace AiriAssistant
 
                 Shutdown();
                 return;
-            }
-            else
-            {
-                IsRunning = false;
             }
 
             base.OnStartup(e);
