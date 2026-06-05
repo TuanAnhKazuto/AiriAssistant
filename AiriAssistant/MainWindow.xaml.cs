@@ -1,14 +1,8 @@
-﻿using System;
-using WpfMessageBox = System.Windows.MessageBox;
-using System.Drawing;
-using System.Media;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Forms;
-using System.Windows.Interop;
+﻿using AiriAssistant.Managers;
 using AiriAssistant.Services;
-using AiriAssistant.Managers;
+using System.Windows;
+using System.Windows.Interop;
+using WpfMessageBox = System.Windows.MessageBox;
 
 namespace AiriAssistant
 {
@@ -18,7 +12,9 @@ namespace AiriAssistant
         private readonly ShutdownService _shutdownService;
         private readonly TrayIconManager _trayIconManager = new();
         private readonly HotkeyManager _hotkeyManager = new();
-        private readonly PowerService _powerService;
+        private readonly PowerService _powerService = new();
+        private readonly BatteryPowerService _batteryPowerService;
+        //private readonly App _app = new();
 
         private IntPtr _windowHandle;
 
@@ -26,8 +22,8 @@ namespace AiriAssistant
         {
             InitializeComponent();
 
-            _powerService = new PowerService();
-            _shutdownService = new ShutdownService(_soundService, _powerService);
+            _shutdownService = new(_soundService, _powerService);
+            _batteryPowerService = new(_soundService);
 
             Loaded += MainWindow_Loaded;
             Closed += MainWindow_Closed;
@@ -37,8 +33,15 @@ namespace AiriAssistant
         {
             Hide();
 
+            // Phát âm thanh khởi động
+            //if (_app.IsRunning) return;
             _soundService.Play("Asset\\Sounds\\System\\startup.wav");
 
+
+            // Bắt đầu theo dõi trạng thái pin
+            _batteryPowerService.Start();
+
+            // Khởi tạo và hiển thị icon trên system tray
             _trayIconManager.Initialize();
 
             _trayIconManager.ShutdownClicked += async () =>
@@ -51,6 +54,7 @@ namespace AiriAssistant
                 System.Windows.Application.Current.Shutdown();
             };
 
+            // Đăng ký hotkey
             _windowHandle = new WindowInteropHelper(this).Handle;
 
             _hotkeyManager.HotkeyPressed += async () =>
@@ -62,12 +66,13 @@ namespace AiriAssistant
 
             if (!success)
             {
-                System.Windows.MessageBox.Show("Không thể đăng ký hotkey Ctrl + Alt + S.");
+                WpfMessageBox.Show("Không thể đăng ký hotkey");
             }
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
         {
+            // Hủy đăng ký hotkey
             _hotkeyManager.Unregister();
 
             if (_trayIconManager != null)
@@ -76,6 +81,9 @@ namespace AiriAssistant
                     _trayIconManager.Dispose();
                 }
             }
+
+            // Dừng theo dõi trạng thái pin
+            _batteryPowerService.Stop();
         }
 
         private async void ShutdownButton_Click(object sender, RoutedEventArgs e)

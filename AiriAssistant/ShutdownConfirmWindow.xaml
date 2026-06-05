@@ -6,7 +6,8 @@
         Height="230"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Background="#15151f">
+        Background="#15151f"
+        Topmost="True">
 
     <Grid Margin="24">
         <StackPanel VerticalAlignment="Center">
