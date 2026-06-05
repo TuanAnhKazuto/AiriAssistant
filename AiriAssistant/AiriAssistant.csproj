@@ -7,24 +7,36 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <ApplicationIcon>Asset\Icon\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Asset\Icon\icon.ico" />
+    <None Remove="Asset\Sounds\Airi_Infor\airi_is_here.wav" />
+    <None Remove="Asset\Sounds\System\charger_connected.wav" />
+    <None Remove="Asset\Sounds\System\charger_disconnected.wav" />
     <None Remove="Asset\Sounds\System\startup.wav" />
     <None Remove="Asset\Sounds\WindowsPower\shutdown_confirm.wav" />
     <None Remove="Asset\Sounds\WindowsPower\shutdown_question.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>4</VersionMinor>
-      <VersionMajor>2</VersionMajor>
-      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
-    </COMReference>
+    <Content Include="Asset\Sounds\Airi_Infor\airi_is_here.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Asset\Icon\icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Sounds\System\charger_connected.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Sounds\System\charger_disconnected.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Asset\Sounds\System\startup.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -26,7 +26,6 @@ namespace AiriAssistant.Services
 
                 await Task.Delay(2700);
 
-                System.Windows.MessageBox.Show("ここでシャットダウンします。");
                 _powerService.Shutdown();
             }
         }
