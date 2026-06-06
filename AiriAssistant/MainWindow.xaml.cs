@@ -14,7 +14,8 @@ namespace AiriAssistant
         private readonly HotkeyManager _hotkeyManager = new();
         private readonly PowerService _powerService = new();
         private readonly BatteryPowerService _batteryPowerService;
-        //private readonly App _app = new();
+        private readonly WindowsSoundService _windowsSoundService = new();
+        private readonly DeviceNotificationService _deviceNotificationService;
 
         private IntPtr _windowHandle;
 
@@ -24,6 +25,7 @@ namespace AiriAssistant
 
             _shutdownService = new(_soundService, _powerService);
             _batteryPowerService = new(_soundService);
+            _deviceNotificationService = new(_soundService);
 
             Loaded += MainWindow_Loaded;
             Closed += MainWindow_Closed;
@@ -33,10 +35,18 @@ namespace AiriAssistant
         {
             Hide();
 
+
+            // Đăng ký hotkey
+            _windowHandle = new WindowInteropHelper(this).Handle;
+
             // Phát âm thanh khởi động
-            //if (_app.IsRunning) return;
             _soundService.Play("Asset\\Sounds\\System\\startup.wav");
 
+            // Vô hiệu hóa âm thanh mặc định của Windows
+            _windowsSoundService.DisableSound();
+
+            // Bắt đầu theo dõi sự kiện kết nối và ngắt kết nối thiết bị
+            _deviceNotificationService.Start(_windowHandle);
 
             // Bắt đầu theo dõi trạng thái pin
             _batteryPowerService.Start();
@@ -53,9 +63,6 @@ namespace AiriAssistant
             {
                 System.Windows.Application.Current.Shutdown();
             };
-
-            // Đăng ký hotkey
-            _windowHandle = new WindowInteropHelper(this).Handle;
 
             _hotkeyManager.HotkeyPressed += async () =>
             {
@@ -84,6 +91,9 @@ namespace AiriAssistant
 
             // Dừng theo dõi trạng thái pin
             _batteryPowerService.Stop();
+
+            // Dừng theo dõi sự kiện kết nối và ngắt kết nối thiết bị
+            _deviceNotificationService.Stop();
         }
 
         private async void ShutdownButton_Click(object sender, RoutedEventArgs e)
