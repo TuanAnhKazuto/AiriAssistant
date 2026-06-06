@@ -98,6 +98,9 @@ namespace AiriAssistant
 
             // Dừng theo dõi sự kiện kết nối và ngắt kết nối thiết bị
             _deviceNotificationService.Stop();
+
+            // Restore âm thanh trước đó của Windows
+            _windowsSoundService.RestoreSound();
         }
 
         private async void ShutdownButton_Click(object sender, RoutedEventArgs e)
