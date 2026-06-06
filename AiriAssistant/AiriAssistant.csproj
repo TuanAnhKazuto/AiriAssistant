@@ -12,6 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Asset\Sounds\Battery\battery_critical.wav" />
+    <None Remove="Asset\Sounds\Battery\battery_low.wav" />
+    <None Remove="Asset\Sounds\Battery\batttery_critical.wav" />
+    <None Remove="Asset\Sounds\Battery\batttery_low.wav" />
     <None Remove="Asset\Icon\icon.ico" />
     <None Remove="Asset\Sounds\Airi_Infor\airi_is_here.wav" />
     <None Remove="Asset\Sounds\Device\device_connected.wav" />
@@ -31,6 +35,12 @@
 
   <ItemGroup>
     <Content Include="Asset\Icon\icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Sounds\Battery\battery_critical.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Asset\Sounds\Battery\battery_low.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Asset\Sounds\Device\device_connected.wav">

@@ -11,6 +11,7 @@ namespace AiriAssistant.Services
         {
             DisableSoundEvent("DeviceConnect");
             DisableSoundEvent("DeviceDisconnect");
+            DisableSoundEvent("LowBatteryAlarm");
         }
 
         private void DisableSoundEvent(string eventName)

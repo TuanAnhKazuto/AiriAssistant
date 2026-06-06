@@ -16,6 +16,7 @@ namespace AiriAssistant
         private readonly BatteryPowerService _batteryPowerService;
         private readonly WindowsSoundService _windowsSoundService = new();
         private readonly DeviceNotificationService _deviceNotificationService;
+        private readonly BatteryWarningService _batteryWarningService;
 
         private IntPtr _windowHandle;
 
@@ -26,6 +27,7 @@ namespace AiriAssistant
             _shutdownService = new(_soundService, _powerService);
             _batteryPowerService = new(_soundService);
             _deviceNotificationService = new(_soundService);
+            _batteryWarningService = new(_soundService);
 
             Loaded += MainWindow_Loaded;
             Closed += MainWindow_Closed;
@@ -50,6 +52,8 @@ namespace AiriAssistant
 
             // Bắt đầu theo dõi trạng thái pin
             _batteryPowerService.Start();
+
+            _batteryWarningService.Start();
 
             // Khởi tạo và hiển thị icon trên system tray
             _trayIconManager.Initialize();
