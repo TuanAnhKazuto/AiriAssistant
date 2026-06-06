@@ -1,8 +1,8 @@
-Airi Assistant là một trợ lý ảo giúp thông báo các hoạt động và event sảy ra trên Windows.
+Airi Assistant là một trợ lý ảo giúp thông báo các hoạt động và event xảy ra trên Windows.
 Ví dụ như khi cắm/rút sạc sẽ có voice thông báo.
 Có Hot-key để Shutdown win nhanh và kèm theo voice thông báo.
 
-Và tất nhiên là voice Nhật cho nó WaiffuAssistant là một trợ lý ảo giúp thông báo các hoạt động và event sảy ra trên Windows.
+Và tất nhiên là voice Nhật cho nó Waifu.
 Ví dụ như khi cắm/rút sạc sẽ có voice thông báo.
 Có Hot-key để Shutdown win nhanh và kèm theo voice thông báo.
 
