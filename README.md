@@ -3,10 +3,6 @@ Ví dụ như khi cắm/rút sạc sẽ có voice thông báo.
 Có Hot-key để Shutdown win nhanh và kèm theo voice thông báo.
 
 Và tất nhiên là voice Nhật cho nó Waifu.
-Ví dụ như khi cắm/rút sạc sẽ có voice thông báo.
-Có Hot-key để Shutdown win nhanh và kèm theo voice thông báo.
-
-Và tất nhiên là voice Nhật cho nó Waifu.
 
 - Các chức năng hiện tại (1.0.0):
   - Hotkey: Ctrl + Shift + Alt + S ==> Phím tắt shutdown có âm báo và bảng xác nhận
