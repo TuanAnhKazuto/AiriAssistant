@@ -14,4 +14,5 @@ Và tất nhiên là voice Nhật cho nó Waifu.
   - Thông báo khi kết nối/ngắt kết nối với các thiết bị(Device) như bàn phím, chuột, USB,...
   - Thông báo khi cắm/rút sạc.
   - Thông báo khi Pin còn 20% và 10%.
+
 !* Còn thếu chức năng trả lại âm báo của hệ thống. Mình sẽ cập nhật sau này.
