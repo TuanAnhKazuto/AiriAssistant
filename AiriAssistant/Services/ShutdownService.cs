@@ -6,6 +6,7 @@ namespace AiriAssistant.Services
     {
         private readonly SoundService _soundService;
         private readonly PowerService _powerService;
+        private readonly WindowsSoundService _windowsSoundService = new();
 
         public ShutdownService(SoundService soundService, PowerService powerService)
         {
@@ -23,9 +24,10 @@ namespace AiriAssistant.Services
             if (confirmWindow.IsConfirmed)
             {
                 _soundService.Play("Asset\\Sounds\\WindowsPower\\shutdown_confirm.wav");
+                _windowsSoundService.RestoreSound();
 
                 await Task.Delay(2700);
-
+                
                 _powerService.Shutdown();
             }
         }
